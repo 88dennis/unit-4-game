@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crystal Collector</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Passion+One" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+
+<body>
+<div class="container">
+        <div class="wrap">
+        
+     
+                <div class="jumbotron">
+   
+<div class="row">
+  <div class="col">
+    <button class="btn btn1 btn-danger" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <h1 class="display-4">Crystal Collector</h1>
+  </button>
+</p>
+<div class="collapse collapse1" id="collapseExample">
+  <div class="card card-body card1">
+    <h1 class="display-4">Goodluck!!!</h1>
+  </div>
+</div>
+    
+  </div>
+  
+</div>
+<p>
+  <div class="buttons">
+  <button id="start" type="button" class="btn btn-warning"><h3>Start a New Game</h3></button>
+</div>
+<div class="buttons">
+  <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"><h3>Instructions</h3>
+    </div>
+  </button>
+</p>
+
+
+<div class="collapse collapse2" id="collapseExample2">
+  <div class="card card-body card2">
+    <p>1. [Watch the demo](https://youtu.be/yNI0l2FMeCk).</p>
+
+    <p>2. The player will have to guess the answer, just like in Word Guess. This time, though, the player will guess with numbers instead of letters. </p>
+
+    <p>3. Here's how the app works:</p>
+
+   <p>* There will be four crystals displayed as buttons on the page.</p>
+
+   <p>* The player will be shown a random number at the start of the game.</p>
+
+   <p>* When the player clicks on a crystal, it will add a specific amount of points to the player's total score.</p>
+
+    <p> * Your game will hide this amount until the player clicks a crystal.
+   <p>  * When they do click one, update the player's score counter.</p>
+
+  <p> * The player wins if their total score matches the random number from the beginning of the game.</p>
+
+   <p>* The player loses if their score goes above the random number.</p>
+
+   <p>* The game restarts whenever the player wins or loses.</p>
+
+     <p>* When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.</p>
+
+   <p>* The app should show the number of games the player wins and loses.To that end, do not refresh the page as a means to restart the game.</p>
+
+  </div>
+</div>
+                
+
+                <hr class="my-4">
+                <div id="collectThis">
+                    <button type="button" class="btn btn-primary"><h1><span>Collect this!: </span><span id="opponent"></span></h1></div>
+
+                <div class="row">
+                        <div class="col"><img id="redc" class="image" src="assets/images/Red.png" alt=""></div>
+                        <div class="col"><img id="bluec" class="image" src="assets/images/Blue.png" alt=""></div>
+                        <div class="col"><img id="yellowc" class="image" src="assets/images/yellow.png" alt=""></div>
+                        <div class="col"><img id="greenc" class="image" src="assets/images/green.png" alt=""></div>
+                      </div>
+                      
+                 
+
+                <div class="row tabs1">
+
+                        <div id="total-score" class="tabs">
+                            <button type="button" class="btn btn-success"><h1><span>Total Score: </span><span id="currentScore"></span></h1></button>
+                        </div>
+
+                        <div id="winsdiv" class="tabs">
+                            <button type="button" class="btn btn-info"><h1><span>Wins: </span><span id="wins"></span></h1></button>
+                        </div>
+
+                        <div id="lossdiv" class="tabs">
+                        <button type="button" class="btn btn-secondary"><h1><span>Loss: </span><span id="loss"></span></h1></button>
+                        </div>
+
+
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
+        
+
+    <script scr="/assets/javascript/game.js" type="text/javascript">
+        
+        $(document).ready(function () {
+
+            var targetScore = 0;
+            var greenRandomNum = 0;
+            var blueRandomNum = 0;
+            var yellowRandomNum = 0;
+            var redRandomNum = 0;
+            var score = 0;
+            var wins = 0;
+            var loss = 0;
+
+            startNewGame()
+
+            function startNewGame() {
+                targetScore = Math.floor((Math.random() * 102) + 19);
+                greenRandomNum = Math.floor((Math.random() * 12) + 1);
+                blueRandomNum = Math.floor((Math.random() * 12) + 1);
+                yellowRandomNum = Math.floor((Math.random() * 12) + 1);
+                redRandomNum = Math.floor((Math.random() * 12) + 1);
+
+                $("#opponent").text(targetScore);
+
+                score = 0;
+
+                $("#currentScore").text(score);
+                $("#wins").text(wins);
+                $("#loss").text(loss);
+
+                $("#start").on("click", function () {
+                startNewGame()
+                });
+
+            }
+
+            function updateStats() {
+                if (score === targetScore) {
+                    wins = wins + 1;
+                    $("#wins").text(wins);
+                    startNewGame()
+                }
+                else if (score > targetScore) {
+                    loss = loss + 1;
+                    $("#loss").text(loss);
+                    startNewGame()
+                }
+            }
+
+            
+
+            $("#redc").on("click", function () {
+                score = score + redRandomNum;
+                $("#currentScore").text(score);
+                updateStats()
+            });
+
+            $("#greenc").on("click", function () {
+                score = score + greenRandomNum;
+                $("#currentScore").text(score);
+                updateStats()
+            });
+
+            $("#yellowc").on("click", function () {
+                score = score + yellowRandomNum;
+                $("#currentScore").text(score);
+                updateStats()
+            });
+
+            $("#bluec").on("click", function () {
+                score = score + blueRandomNum;
+                $("#currentScore").text(score);
+                updateStats()
+            });
+
+           
+        });
+        
+
+    </script>
+
+</body>
+
+</html>
