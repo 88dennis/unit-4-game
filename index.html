@@ -147,7 +147,9 @@
                 $("#wins").text(wins);
                 $("#loss").text(loss);
 
-                $("#start").on("click", function () {
+                $("#start").on("click", function (){
+                    wins = 0;
+                    loss =0;
                 startNewGame()
                 });
 
